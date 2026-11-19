@@ -6,14 +6,14 @@
         <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
         <field name="arch" type="xml">
             <block name="purchase_setting_container" position="after">
-                <block title="Purchase Request" name="purchase_request_setting_container" groups="onyx_purchase_request.group_purchase_request_manager">
+                <block title="Purchase Request" name="purchase_request_setting_container" groups="purchase_request.group_purchase_request_manager">
                     <setting id="purchase_request_approval" company_dependent="1" string="Approval Steps"
                              help="Steps apply when the request total is at or above the minimum amount, lowest sequence first.">
                         <field name="purchase_request_step_ids">
                             <list editable="bottom">
                                 <field name="sequence" widget="handle"/>
                                 <field name="user_ids" widget="many2many_tags"
-                                       domain="[('all_group_ids', 'in', %(onyx_purchase_request.group_purchase_request_user)d)]"/>
+                                       domain="[('all_group_ids', 'in', %(purchase_request.group_purchase_request_user)d)]"/>
                                 <field name="min_amount"/>
                             </list>
                         </field>

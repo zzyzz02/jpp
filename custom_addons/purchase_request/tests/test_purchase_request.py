@@ -10,7 +10,7 @@ class TestPurchaseRequest(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        group = cls.env.ref('onyx_purchase_request.group_purchase_request_user')
+        group = cls.env.ref('purchase_request.group_purchase_request_user')
         Users = cls.env['res.users'].with_context(no_reset_password=True)
         cls.users = Users.create([{
             'name': 'PR User %s' % i,
@@ -21,7 +21,7 @@ class TestPurchaseRequest(TransactionCase):
         cls.user1, cls.user2, cls.user3 = cls.users
         cls.manager = Users.create({
             'name': 'PR Manager', 'login': 'pr_manager', 'email': 'pr_manager@example.com',
-            'group_ids': [(6, 0, cls.env.ref('onyx_purchase_request.group_purchase_request_manager').ids)],
+            'group_ids': [(6, 0, cls.env.ref('purchase_request.group_purchase_request_manager').ids)],
         })
         cls.company = cls.env.company
         cls.product = cls.env['product.product'].create({

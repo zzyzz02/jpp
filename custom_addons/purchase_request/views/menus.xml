@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="menu_purchase_request_root" name="Purchase Request" web_icon="onyx_purchase_request,static/description/icon.png" sequence="30"
-              groups="onyx_purchase_request.group_purchase_request_user"/>
+    <menuitem id="menu_purchase_request_root" name="Purchase Request" web_icon="purchase_request,static/description/icon.png" sequence="30"
+              groups="purchase_request.group_purchase_request_user"/>
     <menuitem id="menu_purchase_request" name="Requests" parent="menu_purchase_request_root" action="action_purchase_request" sequence="10"/>
     <menuitem id="menu_purchase_request_to_approve" name="To Approve" parent="menu_purchase_request_root" action="action_purchase_request_to_approve" sequence="20"/>
     <menuitem id="menu_purchase_request_to_process" name="To Process" parent="menu_purchase_request_root" action="action_purchase_request_line_to_process" sequence="30"
-              groups="onyx_purchase_request.group_purchase_request_manager"/>
+              groups="purchase_request.group_purchase_request_manager"/>
     <menuitem id="menu_purchase_request_config" name="Configuration" parent="menu_purchase_request_root" sequence="100"
-              groups="onyx_purchase_request.group_purchase_request_manager"/>
+              groups="purchase_request.group_purchase_request_manager"/>
     <menuitem id="menu_purchase_request_settings" name="Settings" parent="menu_purchase_request_config" action="purchase.action_purchase_configuration" sequence="10"
               groups="base.group_system"/>
 </odoo>

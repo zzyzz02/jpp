@@ -1,7 +1,7 @@
 from odoo import api, fields, models, Command
 from odoo.exceptions import AccessError, UserError
 
-MANAGER_GROUP = 'onyx_purchase_request.group_purchase_request_manager'
+MANAGER_GROUP = 'purchase_request.group_purchase_request_manager'
 
 
 class PurchaseRequestLine(models.Model):

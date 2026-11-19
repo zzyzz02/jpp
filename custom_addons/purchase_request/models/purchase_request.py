@@ -2,8 +2,8 @@ from odoo import api, fields, models
 from odoo.exceptions import AccessError, UserError, ValidationError
 
 ACTIVITY = 'mail.mail_activity_data_todo'
-MANAGER_GROUP = 'onyx_purchase_request.group_purchase_request_manager'
-USER_GROUP = 'onyx_purchase_request.group_purchase_request_user'
+MANAGER_GROUP = 'purchase_request.group_purchase_request_manager'
+USER_GROUP = 'purchase_request.group_purchase_request_user'
 
 
 class PurchaseRequestApprovalStep(models.Model):
