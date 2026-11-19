@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="purchase_order_form_layer_approval" model="ir.ui.view">
+        <field name="name">purchase.order.form.layer.approval</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_approve']" position="attributes">
+                <attribute name="invisible">state != 'to approve' or approval_ids</attribute>
+            </xpath>
+            <xpath expr="//button[@name='button_approve']" position="before">
+                <field name="can_approve" invisible="1"/>
+                <button name="action_layer_approve" type="object" string="Approve" class="oe_highlight" invisible="not can_approve"/>
+                <button name="action_layer_reject" type="object" string="Reject" invisible="not can_approve"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Approvals" name="approvals" invisible="not approval_ids and not reject_reason">
+                    <group>
+                        <field name="reject_reason" readonly="1" invisible="not reject_reason"/>
+                    </group>
+                    <field name="approval_ids" readonly="1">
+                        <list>
+                            <field name="sequence" widget="handle"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="status" widget="badge" decoration-success="status == 'approved'" decoration-danger="status == 'rejected'" decoration-info="status == 'pending'" decoration-muted="status == 'cancelled'"/>
+                            <field name="date"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_view_search_layer_approval" model="ir.ui.view">
+        <field name="name">purchase.order.select.layer.approval</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="my_Orders" position="after">
+                <filter name="my_approvals" string="My Approvals" domain="[('can_approve', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

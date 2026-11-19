@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_purchase_order_approval_step_user,purchase.order.approval.step user,purchase.order.approval.step,base.group_user,r,
+access_purchase_order_approval_step_manager,purchase.order.approval.step manager,purchase.order.approval.step,purchase.group_purchase_manager,crud,
+access_purchase_order_approval_line_user,purchase.order.approval.line user,purchase.order.approval.line,purchase.group_purchase_user,r,
+access_purchase_order_approval_line_manager,purchase.order.approval.line manager,purchase.order.approval.line,purchase.group_purchase_manager,crud,
+access_purchase_order_reject_wizard,purchase.order.reject.wizard,purchase.order.reject.wizard,purchase.group_purchase_user,crud,

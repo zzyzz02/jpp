@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_purchase_order_layer_approval" model="ir.ui.view">
+        <field name="name">res.config.settings.form.purchase.order.layer.approval</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <setting id="po_order_approval" position="attributes">
+                <attribute name="help">Approval steps apply when the order total is at or above the step minimum amount, lowest sequence first.</attribute>
+            </setting>
+            <xpath expr="//setting[@id='po_order_approval']/div[hasclass('content-group')]" position="replace">
+                <div class="content-group mt16" invisible="not po_order_approval">
+                    <field name="purchase_order_step_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="user_ids" widget="many2many_tags"
+                                   domain="[('all_group_ids', 'in', %(purchase.group_purchase_user)d)]"/>
+                            <field name="min_amount"/>
+                        </list>
+                    </field>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

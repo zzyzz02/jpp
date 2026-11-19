@@ -1,0 +1,17 @@
+id,name,model_id,group_id/id,operation,domain
+access_purchase_request_user_read,Purchase Request: read own or approver,purchase.request,group_purchase_request_user,r,"['|', ('user_id', '=', user.id), ('approval_ids.user_id', '=', user.id)]"
+access_purchase_request_user_edit,Purchase Request: edit own draft,purchase.request,group_purchase_request_user,cu,"[('user_id', '=', user.id), ('state', '=', 'draft')]"
+access_purchase_request_manager,Purchase Request: manager,purchase.request,group_purchase_request_manager,crud,
+access_purchase_request_comp,Purchase Request multi-company,purchase.request,,crud,"[('company_id', 'in', company_ids)]"
+access_purchase_request_line_user_read,Purchase Request Line: read,purchase.request.line,group_purchase_request_user,r,"[('request_id', 'access', 'read')]"
+access_purchase_request_line_user_edit,Purchase Request Line: edit own draft,purchase.request.line,group_purchase_request_user,cud,"[('request_id.user_id', '=', user.id), ('request_id.state', '=', 'draft')]"
+access_purchase_request_line_manager,Purchase Request Line: manager,purchase.request.line,group_purchase_request_manager,crud,
+access_purchase_request_line_comp,Purchase Request Line multi-company,purchase.request.line,,crud,"[('company_id', 'in', company_ids)]"
+access_purchase_request_approval_line_user,purchase.request.approval.line user,purchase.request.approval.line,group_purchase_request_user,r,"[('request_id', 'access', 'read')]"
+access_purchase_request_approval_line_manager,purchase.request.approval.line manager,purchase.request.approval.line,group_purchase_request_manager,crud,
+access_purchase_request_approval_step_user,purchase.request.approval.step user,purchase.request.approval.step,base.group_user,r,
+access_purchase_request_approval_step_manager,purchase.request.approval.step manager,purchase.request.approval.step,group_purchase_request_manager,crud,
+access_purchase_request_approval_step_comp,purchase.request.approval.step multi-company,purchase.request.approval.step,,crud,"[('company_id', 'in', company_ids)]"
+access_purchase_request_po_wizard,purchase.request.po.wizard,purchase.request.po.wizard,group_purchase_request_manager,crud,
+access_purchase_request_stock_wizard,purchase.request.stock.wizard,purchase.request.stock.wizard,group_purchase_request_manager,crud,
+access_purchase_request_reject_wizard,purchase.request.reject.wizard,purchase.request.reject.wizard,group_purchase_request_user,crud,

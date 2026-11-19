@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_request_stock_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.request.stock.wizard.form</field>
+        <field name="model">purchase.request.stock.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Send From Stock">
+                <group>
+                    <field name="company_id" invisible="1"/>
+                    <field name="picking_type_id"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                </group>
+                <field name="line_ids" readonly="1">
+                    <list>
+                        <field name="request_id"/>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                        <field name="qty_remaining"/>
+                        <field name="uom_id"/>
+                    </list>
+                </field>
+                <footer>
+                    <button string="Create Transfer" name="action_create" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

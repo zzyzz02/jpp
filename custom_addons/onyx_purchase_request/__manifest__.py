@@ -1,0 +1,21 @@
+{
+    'name': 'Purchase Request',
+    'version': '20.0.1.0.0',
+    'category': 'Inventory/Purchase',
+    'summary': 'Internal purchase requests with multi-step approval',
+    'depends': ['purchase_stock'],
+    'data': [
+        'security/security.xml',
+        'security/ir.access.csv',
+        'data/sequence.xml',
+        'wizard/purchase_request_po_wizard_views.xml',
+        'wizard/purchase_request_reject_wizard_views.xml',
+        'wizard/purchase_request_stock_wizard_views.xml',
+        'views/purchase_request_views.xml',
+        'views/purchase_request_line_views.xml',
+        'views/res_config_settings_views.xml',
+        'views/menus.xml',
+    ],
+    'application': True,
+    'license': 'LGPL-3',
+}
