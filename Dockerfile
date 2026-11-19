@@ -1,5 +1,4 @@
-ARG ODOO_VERSION=20.0
-FROM odoo:${ODOO_VERSION}
+FROM odoo:20
 
 USER root
 COPY requirements.txt /tmp/requirements.txt

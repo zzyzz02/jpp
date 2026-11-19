@@ -1,9 +1,6 @@
 services:
   odoo:
-    build:
-      context: .
-      args:
-        ODOO_VERSION: ${ODOO_VERSION:-20.0}
+    build: .
     restart: unless-stopped
     depends_on:
       db:
