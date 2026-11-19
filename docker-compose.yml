@@ -9,7 +9,10 @@ services:
       HOST: db
       USER: odoo
       PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD}
-    command: ["--", "--admin_passwd", "${ADMIN_PASSWD:?set ADMIN_PASSWD}"]
+      ADMIN_PASSWD: ${ADMIN_PASSWD:?set ADMIN_PASSWD}
+      ODOO_RC: /var/lib/odoo/odoo.conf
+    # Odoo 20: admin_passwd hanya dari file config. Config di-generate ulang tiap start, env = sumber kebenaran.
+    entrypoint: ["sh", "-c", "cp /etc/odoo/odoo.conf $$ODOO_RC && printf 'admin_passwd = %s\\n' \"$$ADMIN_PASSWD\" >> $$ODOO_RC && exec /entrypoint.sh odoo"]
     expose:
       - "8069"
       - "8072"
