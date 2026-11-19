@@ -13,6 +13,9 @@ services:
       ODOO_RC: /var/lib/odoo/odoo.conf
     # Odoo 20: admin_passwd hanya dari file config. Config di-generate ulang tiap start, env = sumber kebenaran.
     entrypoint: ["sh", "-c", "cp /etc/odoo/odoo.conf $$ODOO_RC && printf 'admin_passwd = %s\\n' \"$$ADMIN_PASSWD\" >> $$ODOO_RC && exec /entrypoint.sh odoo"]
+    # ponytail: port publik tanpa HTTPS, sementara. Hapus begitu ada domain + Let's Encrypt.
+    ports:
+      - "8069:8069"
     expose:
       - "8069"
       - "8072"
